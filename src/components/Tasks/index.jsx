@@ -8,7 +8,7 @@ const Tasks = (lists) => {
     const x = window.prompt("Введите новое значение", lists.lists.name);
     x && lists.onEditTitle(lists.lists.id, x);
   };
-
+  console.log(lists);
   return (
     <div className="tasks">
       <h2 className="tasks__title">
