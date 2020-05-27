@@ -3,23 +3,23 @@ import editSvg from "../../assets/img/edit.svg";
 
 import "./Tasks.scss";
 
-const Tasks = (lists) => {
+const Tasks = ({ lists, onEditTitle }) => {
   const editTitle = () => {
-    const x = window.prompt("Введите новое значение", lists.lists.name);
-    x && lists.onEditTitle(lists.lists.id, x);
+    const x = window.prompt("Введите новое значение", lists.name);
+    x && onEditTitle(lists.lists.id, x);
   };
   console.log(lists);
   return (
     <div className="tasks">
       <h2 className="tasks__title">
-        {lists.lists.name}
+        {lists.name}
         <img onClick={editTitle} src={editSvg} alt="Edit icon" />
       </h2>
       <div className="tasks__items">
-        {!lists.lists.tasks.length && <h2>Задачи отсутствуют</h2>}
+        {!lists.tasks.length && <h2>Задачи отсутствуют</h2>}
         <ul className="list">
           <li>
-            {lists.lists.tasks.map((task) => (
+            {lists.tasks.map((task) => (
               <div key={task.id} className="tasks__items-row">
                 <div className="checkbox">
                   <input
