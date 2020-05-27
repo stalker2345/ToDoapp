@@ -1,0 +1,95 @@
+.tasks {
+  &__items {
+    &-row {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      left: 15px;
+    }
+
+    h2 {
+      /* Задачи отсутствуют */
+      margin-top: 50px;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 39px;
+      text-align: center;
+      /* identical to box height */
+
+      color: #c9d1d3;
+    }
+  }
+
+  li {
+    display: inline-block;
+    input {
+      position: absolute;
+      width: 320px;
+      margin-left: 50px;
+      border: none;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    font-family: Montserrat;
+
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+
+    color: #64c4ed;
+
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    img {
+      opacity: 0.2;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .checkbox {
+    input {
+      display: none;
+      //checked: false;
+    }
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgb(197, 195, 195);
+      border-radius: 30px;
+      width: 20px;
+      height: 20px;
+      &:hover {
+        background-color: rgb(236, 234, 234);
+        svg {
+          opacity: 0.2;
+        }
+      }
+      svg {
+        left: 1px;
+        opacity: 0;
+      }
+    }
+
+    input:checked + label {
+      background-color: #4dd599;
+      border: 2px solid #4dd599;
+      svg {
+        opacity: 1;
+        path {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+}
