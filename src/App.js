@@ -33,11 +33,12 @@ function App() {
   };
 
   const onEditListTitle = (id, name) => {
-    const newList = lists.filter((list) => list.id === id);
-    newList[0].name = name;
-    const newLists = lists.map((list) =>
-      list.id === newList[0].id ? (list = newList[0]) : list
-    );
+    const newLists = lists.map((list) => {
+      if (list.id === id) {
+        list.name = name;
+      }
+      return list;
+    });
     setLists(newLists);
   };
   return (
