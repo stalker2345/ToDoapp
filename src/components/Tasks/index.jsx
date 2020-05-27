@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import editSvg from "../../assets/img/edit.svg";
-import axios from "axios";
-//import checkSvg from "../../assets/img/check.svg";
 
 import "./Tasks.scss";
 
@@ -11,7 +9,6 @@ const Tasks = (lists) => {
     x && lists.onEditTitle(lists.lists.id, x);
   };
   console.log(lists.lists.tasks.completed);
-  //const [taskName, setTaskName] = useState(null);
 
   return (
     <div className="tasks">

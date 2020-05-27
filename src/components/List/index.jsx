@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-//import listSvg from '../assets/img/list.svg'
+import React from "react";
+
 import "./List.scss";
 import classNames from "classnames";
 
@@ -17,7 +17,6 @@ const List = ({
   onClickItem,
   activeItem,
 }) => {
-  //const [removedItemId, setRemovedItemId] = useState(0);
   const removed = (e) => {
     window.confirm("Вы хотите удалить?");
     axios.delete("http://localhost:3001/lists/" + e).then(onRemove({ id: e }));
