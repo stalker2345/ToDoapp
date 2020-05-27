@@ -73,6 +73,7 @@ function App() {
             onRemove={onRemoveList}
             isRemovable
             onClickItem={(item) => {
+              console.log(item);
               setTasks(item);
             }}
             activeItem={tasks}
