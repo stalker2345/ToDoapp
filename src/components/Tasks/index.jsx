@@ -10,7 +10,7 @@ const Tasks = (lists) => {
     const x = window.prompt("Введите новое значение", lists.lists.name);
     x && lists.onEditTitle(lists.lists.id, x);
   };
-
+  console.log(lists.lists.tasks.completed);
   //const [taskName, setTaskName] = useState(null);
 
   return (
@@ -26,7 +26,11 @@ const Tasks = (lists) => {
             {lists.lists.tasks.map((task) => (
               <div key={task.id} className="tasks__items-row">
                 <div className="checkbox">
-                  <input id={task.id} type="checkbox" />
+                  <input
+                    id={task.id}
+                    type="checkbox"
+                    checked={task.completed}
+                  />
                   <label htmlFor={task.id}>
                     <svg
                       width="11"
