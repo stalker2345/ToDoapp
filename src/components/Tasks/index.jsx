@@ -1,14 +1,27 @@
 import React from "react";
+
+import AddTaskForm from "./AddTaskForm";
+
 import editSvg from "../../assets/img/edit.svg";
+
+import axios from "axios";
 
 import "./Tasks.scss";
 
 const Tasks = ({ lists, onEditTitle }) => {
   const editTitle = () => {
     const x = window.prompt("Введите новое значение", lists.name);
-    x && onEditTitle(lists.lists.id, x);
+    x && onEditTitle(lists.id, x);
+    x &&
+      axios
+        .patch("http://localhost:3001/lists/" + lists.id, {
+          name: x,
+        })
+        .catch(() => alert("ошибка"));
   };
+
   console.log(lists);
+
   return (
     <div className="tasks">
       <h2 className="tasks__title">
@@ -17,7 +30,7 @@ const Tasks = ({ lists, onEditTitle }) => {
       </h2>
       <div className="tasks__items">
         {!lists.tasks.length && <h2>Задачи отсутствуют</h2>}
-        <ul className="list">
+        <ul>
           <li>
             {lists.tasks.map((task) => (
               <div key={task.id} className="tasks__items-row">
@@ -51,6 +64,7 @@ const Tasks = ({ lists, onEditTitle }) => {
           </li>
         </ul>
       </div>
+      <AddTaskForm></AddTaskForm>
     </div>
   );
 };
