@@ -41,6 +41,19 @@ function App() {
     });
     setLists(newLists);
   };
+  const onAddTask = (listId, tasks1) => {
+    const newTasks = tasks;
+    newTasks.tasks.push(tasks1);
+
+    const newLists = lists.map((list) => {
+      if (list.id === listId) {
+        list = newTasks;
+      }
+      return list;
+    });
+    setLists(newLists);
+    console.log(newLists);
+  };
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -73,18 +86,25 @@ function App() {
             onRemove={onRemoveList}
             isRemovable
             onClickItem={(item) => {
-              console.log(item);
               setTasks(item);
+              console.log(item);
             }}
             activeItem={tasks}
           />
         )}
+
         {lists && (
           <AddListButton onAdd={onAddList} colors={colors} lists={lists} />
         )}
       </div>
       <div className="todo__tasks">
-        {tasks && <Tasks lists={tasks} onEditTitle={onEditListTitle} />}
+        {tasks && (
+          <Tasks
+            lists={tasks}
+            onEditTitle={onEditListTitle}
+            onAddTask={onAddTask}
+          />
+        )}
       </div>
     </div>
   );

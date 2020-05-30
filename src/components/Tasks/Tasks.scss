@@ -5,8 +5,9 @@
       display: flex;
       align-items: center;
       cursor: pointer;
-
+      margin-left: 20px;
       margin-top: 20px;
+      transition: 0.15s ease-in-out;
       img {
         width: 20px;
         height: 20px;
@@ -48,6 +49,7 @@
   li {
     display: inline-block;
     input {
+      font-size: 14px;
       width: 320px;
       margin-left: 25px;
       border: none;
@@ -57,7 +59,7 @@
   &__title {
     display: flex;
     justify-content: space-between;
-    font-family: Montserrat;
+    // font-family: Montserrat;
 
     font-weight: bold;
     font-size: 32px;
@@ -72,6 +74,7 @@
       opacity: 0.2;
       cursor: pointer;
       &:hover {
+        transition: 0.15s ease-in-out;
         opacity: 0.8;
       }
     }

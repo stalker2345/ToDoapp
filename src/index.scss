@@ -49,6 +49,19 @@
     &:active {
       background: darken(#4dd599, 11%);
     }
+    &--grey {
+      margin-top: 15px;
+      margin-left: 10px;
+      background: rgb(228, 228, 228);
+      color: rgb(94, 94, 94);
+      &:hover {
+        background: darken(rgb(228, 228, 228), 7%);
+      }
+
+      &:active {
+        background: darken(rgb(228, 228, 228), 11%);
+      }
+    }
   }
 
   .field {
@@ -58,6 +71,11 @@
     box-sizing: border-box;
     border-radius: 4px;
     padding: 8px 12px;
+
+    &--task {
+      margin-top: 15px;
+      margin-bottom: -15px;
+    }
     &:focus {
       border-color: #dfdada;
     }

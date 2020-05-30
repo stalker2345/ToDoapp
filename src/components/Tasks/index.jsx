@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import AddTaskForm from "./AddTaskForm";
 
@@ -8,7 +8,7 @@ import axios from "axios";
 
 import "./Tasks.scss";
 
-const Tasks = ({ lists, onEditTitle }) => {
+const Tasks = ({ lists, onEditTitle, onAddTask }) => {
   const editTitle = () => {
     const x = window.prompt("Введите новое значение", lists.name);
     x && onEditTitle(lists.id, x);
@@ -19,8 +19,6 @@ const Tasks = ({ lists, onEditTitle }) => {
         })
         .catch(() => alert("ошибка"));
   };
-
-  console.log(lists);
 
   return (
     <div className="tasks">
@@ -64,7 +62,7 @@ const Tasks = ({ lists, onEditTitle }) => {
           </li>
         </ul>
       </div>
-      <AddTaskForm></AddTaskForm>
+      <AddTaskForm list={lists} onTaskAdd={onAddTask}></AddTaskForm>
     </div>
   );
 };
