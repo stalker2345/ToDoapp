@@ -42,12 +42,9 @@ function App() {
     setLists(newLists);
   };
   const onAddTask = (listId, tasks1) => {
-    const newTasks = tasks;
-    newTasks.tasks.push(tasks1);
-
     const newLists = lists.map((list) => {
       if (list.id === listId) {
-        list = newTasks;
+        list.tasks = [...list.tasks, tasks1];
       }
       return list;
     });
