@@ -55,6 +55,7 @@ function App() {
     <div className="todo">
       <div className="todo__sidebar">
         <List
+          active={!tasks}
           items={[
             {
               icon: (
@@ -72,7 +73,6 @@ function App() {
                 </svg>
               ),
               name: "Все задачи",
-              active: true,
             },
           ]}
         />

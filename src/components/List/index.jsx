@@ -16,6 +16,7 @@ const List = ({
   onRemove,
   onClickItem,
   activeItem,
+  active,
 }) => {
   const removed = (e) => {
     window.confirm("Вы хотите удалить?");
@@ -28,7 +29,7 @@ const List = ({
         <li
           key={index}
           className={classNames(item.className, {
-            active: activeItem && activeItem.id === item.id,
+            active: active || (activeItem && activeItem.id === item.id),
           })}
           onClick={onClickItem && (() => onClickItem(item))}
         >
