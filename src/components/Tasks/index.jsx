@@ -22,43 +22,46 @@ const Tasks = ({ lists, onEditTitle, onAddTask }) => {
 
   return (
     <div className="tasks">
-      <h2 className="tasks__title">
+      <h2 style={{ color: lists.color.hex }} className="tasks__title">
         {lists.name}
         <img onClick={editTitle} src={editSvg} alt="Edit icon" />
       </h2>
       <div className="tasks__items">
-        {!lists.tasks.length && <h2>Задачи отсутствуют</h2>}
+        {lists.hasOwnProperty("tasks") && !lists.tasks.length && (
+          <h2>Задачи отсутствуют</h2>
+        )}
         <ul>
           <li>
-            {lists.tasks.map((task) => (
-              <div key={task.id} className="tasks__items-row">
-                <div className="checkbox">
-                  <input
-                    id={task.id}
-                    type="checkbox"
-                    checked={task.completed}
-                  />
-                  <label htmlFor={task.id}>
-                    <svg
-                      width="11"
-                      height="8"
-                      viewBox="0 0 11 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.29999 1.20001L3.79999 6.70001L1.29999 4.20001"
-                        stroke="black"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </label>
+            {lists.hasOwnProperty("tasks") &&
+              lists.tasks.map((task) => (
+                <div key={task.id} className="tasks__items-row">
+                  <div className="checkbox">
+                    <input
+                      id={task.id}
+                      type="checkbox"
+                      checked={task.completed}
+                    />
+                    <label htmlFor={task.id}>
+                      <svg
+                        width="11"
+                        height="8"
+                        viewBox="0 0 11 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.29999 1.20001L3.79999 6.70001L1.29999 4.20001"
+                          stroke="black"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </label>
+                  </div>
+                  <input readOnly value={task.text} />
                 </div>
-                <input readOnly value={task.text} />
-              </div>
-            ))}
+              ))}
           </li>
         </ul>
       </div>

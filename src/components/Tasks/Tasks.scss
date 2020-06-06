@@ -1,4 +1,8 @@
 .tasks {
+  &:not(:last-of-type) {
+    margin-bottom: 40px;
+  }
+  margin-bottom: 25px;
   &__form {
     &-new {
       opacity: 0.3;

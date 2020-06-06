@@ -19,16 +19,6 @@
       "id": 4,
       "name": "Книги",
       "colorId": 2
-    },
-    {
-      "id": 5,
-      "name": "Личное",
-      "colorId": 1
-    },
-    {
-      "name": "Спорт",
-      "colorId": 3,
-      "id": 6
     }
   ],
   "tasks": [
@@ -133,6 +123,12 @@
       "text": "asdasd",
       "completed": true,
       "id": 18
+    },
+    {
+      "listId": 2,
+      "text": "asdas",
+      "completed": true,
+      "id": 19
     }
   ],
   "colors": [

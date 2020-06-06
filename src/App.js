@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 import { List, AddListButton, Tasks } from "./components";
-//import DB from "./assets/db.json";
+import { Route, useHistory, useLocation } from "react-router-dom";
+
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/lists?_expand=color&_embed=tasks")
       .then(({ data }) => {
-        console.log(data);
         setLists(data);
       });
     axios
@@ -21,16 +20,18 @@ function App() {
   const [tasks, setTasks] = useState(null);
   const [colors, setColors] = useState(null);
   const [lists, setLists] = useState(null);
+  let history = useHistory();
+  const location = useLocation();
 
   const onAddList = (obj) => {
     const newLists = [...lists, obj];
+
     setLists(newLists);
   };
 
   const onRemoveList = (obj) => {
-    const newLists = lists.filter((x) => x !== obj);
+    const newLists = lists.filter((x) => x.id !== obj.id);
     setLists(newLists);
-    //console.log(newLists);
   };
 
   const onEditListTitle = (id, name) => {
@@ -50,12 +51,23 @@ function App() {
       return list;
     });
     setLists(newLists);
-    console.log(newLists);
   };
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+
+    const listId = currentPath.split("lists/")[1];
+    const task = lists && lists.find((list) => list.id === Number(listId));
+    setTasks(task);
+  }, [lists, location]);
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
         <List
+          onClickItem={(item) => {
+            history.push(`/`);
+          }}
           active={!tasks}
           items={[
             {
@@ -84,8 +96,7 @@ function App() {
             onRemove={onRemoveList}
             isRemovable
             onClickItem={(item) => {
-              setTasks(item);
-              console.log(item);
+              history.push(`/lists/${item.id}`);
             }}
             activeItem={tasks}
           />
@@ -96,13 +107,27 @@ function App() {
         )}
       </div>
       <div className="todo__tasks">
-        {tasks && (
-          <Tasks
-            lists={tasks}
-            onEditTitle={onEditListTitle}
-            onAddTask={onAddTask}
-          />
-        )}
+        <Route exact path="/">
+          {lists &&
+            lists.map((list) => (
+              <Tasks
+                key={list.id}
+                lists={list}
+                onEditTitle={onEditListTitle}
+                onAddTask={onAddTask}
+              />
+            ))}
+        </Route>
+
+        <Route exact path="/lists/:id">
+          {tasks && (
+            <Tasks
+              lists={tasks}
+              onEditTitle={onEditListTitle}
+              onAddTask={onAddTask}
+            />
+          )}
+        </Route>
       </div>
     </div>
   );

@@ -33,11 +33,15 @@ const List = ({
           })}
           onClick={onClickItem && (() => onClickItem(item))}
         >
-          <i>{item.icon || <Badge color={item.color.name}></Badge>}</i>
+          <i>
+            {item.icon || <Badge color={item.color.name || item.color}></Badge>}
+          </i>
           <span>
             {item.name}
             <span className="tasks-length">
-              {item.id && `  (${item.tasks.length})`}
+              {item.hasOwnProperty("tasks") &&
+                item.id &&
+                `  (${item.tasks.length})`}
             </span>
           </span>
 
