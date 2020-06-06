@@ -7,7 +7,7 @@ import axios from "axios";
 function AddTaskForm({ list, onTaskAdd }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [taskName, setTaskName] = useState("");
-  const [isSending, setIsSending] = useState(true);
+  const [isSending, setIsSending] = useState(false);
 
   const addTask = () => {
     const obj = {

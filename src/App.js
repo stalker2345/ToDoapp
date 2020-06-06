@@ -55,10 +55,13 @@ function App() {
 
   useEffect(() => {
     const currentPath = location.pathname;
-
     const listId = currentPath.split("lists/")[1];
     const task = lists && lists.find((list) => list.id === Number(listId));
+
+    task && (task.hasOwnProperty("tasks") || (task.tasks = []));
+
     setTasks(task);
+    console.log(task);
   }, [lists, location]);
 
   return (

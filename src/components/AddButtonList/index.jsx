@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import List from "../List";
+import Badge from "../Budge/index.jsx";
 
 import "./AddButtonList.scss";
-import Badge from "../Budge/index.jsx";
 
 import CloseSvg from "../../assets/img/close.svg";
 
@@ -40,8 +41,7 @@ const AddListButton = ({ onAdd, colors, lists }) => {
         .then(({ data }) => {
           // console.log(data);
 
-          const colorName = colors.filter((c) => c.id === selectedColor)[0]
-            .name;
+          const colorName = colors.filter((c) => c.id === selectedColor)[0];
           const listObj = { ...data, color: colorName };
           console.log(listObj);
           onAdd(listObj);
