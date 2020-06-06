@@ -63,7 +63,6 @@ function App() {
     task && (task.hasOwnProperty("tasks") || (task.tasks = []));
 
     setTasks(task);
-    console.log(task);
   }, [lists, location]);
 
   return (

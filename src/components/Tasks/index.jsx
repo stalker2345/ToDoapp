@@ -19,7 +19,7 @@ const Tasks = ({ lists, onEditTitle, onAddTask }) => {
         })
         .catch(() => alert("ошибка"));
   };
-  console.log(lists);
+
   return (
     <div className="tasks">
       <h2 style={{ color: lists.color.hex }} className="tasks__title">

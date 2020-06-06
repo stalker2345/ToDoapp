@@ -19,7 +19,6 @@ function AddTaskForm({ list, onTaskAdd }) {
       .post("http://localhost:3001/tasks", obj)
       .then(() => {
         onTaskAdd(list.id, obj);
-        console.log(obj);
       })
       .catch(() => alert("ошибка"))
       .finally(setIsSending(false));
