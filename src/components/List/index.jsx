@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./List.scss";
 import classNames from "classnames";
@@ -22,7 +22,9 @@ const List = ({
     window.confirm("Вы хотите удалить?");
     axios.delete("http://localhost:3001/lists/" + e).then(onRemove({ id: e }));
   };
-
+  useEffect(() => {
+    items.tasks && console.log(items.tasks.lenght);
+  }, []);
   return (
     <ul onClick={onClick} className="list">
       {items.map((item, index) => (

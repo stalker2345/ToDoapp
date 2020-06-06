@@ -27,6 +27,8 @@ function App() {
     const newLists = [...lists, obj];
 
     setLists(newLists);
+    history.push(`/lists/${obj.id}`);
+    history.goForward();
   };
 
   const onRemoveList = (obj) => {
@@ -68,7 +70,7 @@ function App() {
     <div className="todo">
       <div className="todo__sidebar">
         <List
-          onClickItem={(item) => {
+          onClickItem={() => {
             history.push(`/`);
           }}
           active={!tasks}
