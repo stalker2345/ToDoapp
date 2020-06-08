@@ -27,6 +27,7 @@ function App() {
     const newLists = [...lists, obj];
 
     setLists(newLists);
+
     history.push(`/lists/${obj.id}`);
     history.goForward();
   };
@@ -51,10 +52,8 @@ function App() {
       if (list.id === listId) {
         list.tasks = [...list.tasks, task];
       }
-      //console.log(task);
       return list;
     });
-
     setLists(newLists);
   };
 
@@ -64,10 +63,8 @@ function App() {
         if (list.id === listId) {
           list.tasks = list.tasks.filter((task) => task.id !== id);
         }
-
         return list;
       });
-
       setLists(newLists);
 
       axios
@@ -87,24 +84,25 @@ function App() {
             return task;
           });
         }
-
         return list;
       });
-
       setLists(newLists);
+
       axios
         .patch("http://localhost:3001/tasks/" + id, { text: taskString })
         .catch(() => alert("ошибка"));
     }
   };
 
+  const onCompliteTask = () => {};
+
   useEffect(() => {
+    //react-router hooks for routing
     const currentPath = location.pathname;
     const listId = currentPath.split("lists/")[1];
     const task = lists && lists.find((list) => list.id === Number(listId));
 
     task && (task.hasOwnProperty("tasks") || (task.tasks = []));
-
     setTasks(task);
   }, [lists, location]);
 
@@ -164,6 +162,7 @@ function App() {
                 onAddTask={onAddTask}
                 onRemove={onRemoveTask}
                 onEditTask={onEditTask}
+                onCompliteTask={onCompliteTask}
               />
             ))}
         </Route>
@@ -176,6 +175,7 @@ function App() {
               onAddTask={onAddTask}
               onRemove={onRemoveTask}
               onEditTask={onEditTask}
+              onCompliteTask={onCompliteTask}
             />
           )}
         </Route>

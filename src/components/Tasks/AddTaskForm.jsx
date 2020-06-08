@@ -35,6 +35,7 @@ function AddTaskForm({ list, onTaskAdd }) {
           <span>Новая Задача</span>
         </div>
       )}
+
       {visiblePopup && (
         <div className="tasks__form-add-block">
           <input

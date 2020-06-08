@@ -9,16 +9,7 @@ import CloseSvg from "../../assets/img/close.svg";
 
 import axios from "axios";
 
-//import { lists } from "../../assets/db.json";
-
-const AddListButton = ({ onAdd, colors, lists }) => {
-  const onClose = () => {
-    setVisiblePopup(false);
-
-    setInputValue("");
-    setSelectedColor(colors[0].id);
-  };
-
+const AddListButton = ({ onAdd, colors }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedColor, setSelectedColor] = useState(3);
   const [inputValue, setInputValue] = useState("");
@@ -30,6 +21,12 @@ const AddListButton = ({ onAdd, colors, lists }) => {
     }
   }, [colors]);
 
+  const onClose = () => {
+    setVisiblePopup(false);
+    setInputValue("");
+    setSelectedColor(colors[0].id);
+  };
+
   const addList = () => {
     if (inputValue !== "") {
       setIsLoading(true);
@@ -39,18 +36,13 @@ const AddListButton = ({ onAdd, colors, lists }) => {
           colorId: selectedColor,
         })
         .then(({ data }) => {
-          // console.log(data);
-
           const colorName = colors.filter((c) => c.id === selectedColor)[0];
           const listObj = { ...data, color: colorName };
-          console.log(listObj);
+
           onAdd(listObj);
           onClose();
         })
         .finally(setIsLoading(false));
-
-      // onAdd({});
-
       return;
     }
     return alert("введите");

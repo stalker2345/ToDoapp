@@ -9,7 +9,14 @@ import axios from "axios";
 
 import "./Tasks.scss";
 
-const Tasks = ({ lists, onEditTitle, onAddTask, onRemove, onEditTask }) => {
+const Tasks = ({
+  lists,
+  onEditTitle,
+  onAddTask,
+  onRemove,
+  onEditTask,
+  onCompliteTask,
+}) => {
   const editTitle = () => {
     const x = window.prompt("Введите новое значение", lists.name);
     x && onEditTitle(lists.id, x);
@@ -42,6 +49,7 @@ const Tasks = ({ lists, onEditTitle, onAddTask, onRemove, onEditTask }) => {
                   {...task}
                   onRemove={onRemove}
                   onEdit={onEditTask}
+                  onComplite={onCompliteTask}
                 />
               ))}
           </li>

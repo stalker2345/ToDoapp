@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Task({ list, id, text, completed, onRemove, onEdit }) {
+export default function Task({
+  list,
+  id,
+  text,
+  completed,
+  onRemove,
+  onEdit,
+  onComplite,
+}) {
+  const [checkboxState, setCheckboxState] = useState(completed);
+
+  const completeTask = () => {
+    setCheckboxState(!checkboxState);
+    onComplite(checkboxState);
+  };
   return (
     <div key={id} className="tasks__items-row">
-      <div className="checkbox">
+      <div onMouseDown={(e) => e.preventDefault()} className="checkbox">
         <input
-          //onChange={onChangeCheckbox}
+          onChange={completeTask}
           id={`task-${id}`}
           type="checkbox"
-          checked={completed}
+          checked={checkboxState}
         />
         <label htmlFor={`task-${id}`}>
           <svg
