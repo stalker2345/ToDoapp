@@ -13,7 +13,7 @@ export default function Task({
 
   const completeTask = () => {
     setCheckboxState(!checkboxState);
-    onComplite(checkboxState);
+    onComplite(id, list.id, !checkboxState);
   };
   return (
     <div key={id} className="tasks__items-row">

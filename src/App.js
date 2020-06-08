@@ -94,7 +94,27 @@ function App() {
     }
   };
 
-  const onCompliteTask = () => {};
+  const onCompliteTask = (id, listId, completed) => {
+    const newList = lists.map((list) => {
+      if (list.id === listId) {
+        list.tasks = list.tasks.map((task) => {
+          if (task.id === id) {
+            task.completed = completed;
+          }
+          return task;
+        });
+      }
+      return list;
+    });
+    setLists(newList);
+    axios
+      .patch("http://localhost:3001/tasks/" + id, {
+        completed: completed,
+      })
+      .catch(() => {
+        alert("Не удалось обновить задачу");
+      });
+  };
 
   useEffect(() => {
     //react-router hooks for routing
