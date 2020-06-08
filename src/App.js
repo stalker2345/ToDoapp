@@ -51,24 +51,50 @@ function App() {
       if (list.id === listId) {
         list.tasks = [...list.tasks, task];
       }
-      // console.log(task);
+      //console.log(task);
       return list;
     });
 
     setLists(newLists);
-    console.log(tasks);
   };
 
-  const onRemoveTask = (obj, id) => {
+  const onRemoveTask = (id, listId) => {
     if (window.confirm("удалить?")) {
+      const newLists = lists.map((list) => {
+        if (list.id === listId) {
+          list.tasks = list.tasks.filter((task) => task.id !== id);
+        }
+
+        return list;
+      });
+
+      setLists(newLists);
+
       axios
         .delete("http://localhost:3001/tasks/" + id)
         .catch(() => alert("ошибка"));
+    }
+  };
 
-      // console.log(obj.id);
-      // console.log(id);
-      // console.log(newLists);
-      //setLists(newLists);
+  const onEditTask = (id, listId) => {
+    const taskString = window.prompt("Введите строку");
+
+    if (taskString) {
+      const newLists = lists.map((list) => {
+        if (list.id === listId) {
+          list.tasks = list.tasks.map((task) => {
+            task.id === id && (task.text = taskString);
+            return task;
+          });
+        }
+
+        return list;
+      });
+
+      setLists(newLists);
+      axios
+        .patch("http://localhost:3001/tasks/" + id, { text: taskString })
+        .catch(() => alert("ошибка"));
     }
   };
 
@@ -137,6 +163,7 @@ function App() {
                 onEditTitle={onEditListTitle}
                 onAddTask={onAddTask}
                 onRemove={onRemoveTask}
+                onEditTask={onEditTask}
               />
             ))}
         </Route>
@@ -148,6 +175,7 @@ function App() {
               onEditTitle={onEditListTitle}
               onAddTask={onAddTask}
               onRemove={onRemoveTask}
+              onEditTask={onEditTask}
             />
           )}
         </Route>

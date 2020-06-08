@@ -23,8 +23,10 @@
         border: solid 2px transparent;
         position: static;
         cursor: pointer;
+        transition: 0.15s ease-in-out;
         &.active {
           border: solid 2px #0c0c0c;
+          filter: contrast(1.5);
         }
       }
     }
@@ -43,6 +45,11 @@
       right: -8px;
       top: -8px;
       cursor: pointer;
+      opacity: 0.8;
+      transition: 0.15s ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

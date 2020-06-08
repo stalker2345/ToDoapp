@@ -30,7 +30,7 @@ export default function Task({ list, id, text, completed, onRemove, onEdit }) {
       </div>
       <p>{text}</p>
       <div className="tasks__items-row-actions">
-        <div>
+        <div onClick={() => onEdit(id, list.id)}>
           <svg
             width="11"
             height="11"
@@ -44,7 +44,7 @@ export default function Task({ list, id, text, completed, onRemove, onEdit }) {
             />
           </svg>
         </div>
-        <div onClick={() => onRemove(list, id)}>
+        <div onClick={() => onRemove(id, list.id)}>
           <svg
             width="11"
             height="11"

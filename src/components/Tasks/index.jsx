@@ -9,10 +9,11 @@ import axios from "axios";
 
 import "./Tasks.scss";
 
-const Tasks = ({ lists, onEditTitle, onAddTask, onRemove }) => {
+const Tasks = ({ lists, onEditTitle, onAddTask, onRemove, onEditTask }) => {
   const editTitle = () => {
     const x = window.prompt("Введите новое значение", lists.name);
     x && onEditTitle(lists.id, x);
+
     x &&
       axios
         .patch("http://localhost:3001/lists/" + lists.id, {
@@ -35,7 +36,13 @@ const Tasks = ({ lists, onEditTitle, onAddTask, onRemove }) => {
           <li>
             {lists.hasOwnProperty("tasks") &&
               lists.tasks.map((task, index) => (
-                <Task list={lists} key={index} {...task} onRemove={onRemove} />
+                <Task
+                  list={lists}
+                  key={index}
+                  {...task}
+                  onRemove={onRemove}
+                  onEdit={onEditTask}
+                />
               ))}
           </li>
         </ul>
