@@ -17,8 +17,8 @@ function AddTaskForm({ list, onTaskAdd }) {
     };
     axios
       .post("http://localhost:3001/tasks", obj)
-      .then(() => {
-        onTaskAdd(list.id, obj);
+      .then(({ data }) => {
+        onTaskAdd(list.id, data);
       })
       .catch(() => alert("ошибка"))
       .finally(setIsSending(false));
@@ -26,13 +26,15 @@ function AddTaskForm({ list, onTaskAdd }) {
 
   return (
     <div className="tasks__form">
-      <div
-        onClick={() => setVisiblePopup(!visiblePopup)}
-        className="tasks__form-new"
-      >
-        <img src={addSvg} alt="Добавить"></img>
-        <span>Новая Задача</span>
-      </div>
+      {!visiblePopup && (
+        <div
+          onClick={() => setVisiblePopup(!visiblePopup)}
+          className="tasks__form-new"
+        >
+          <img src={addSvg} alt="Добавить"></img>
+          <span>Новая Задача</span>
+        </div>
+      )}
       {visiblePopup && (
         <div className="tasks__form-add-block">
           <input

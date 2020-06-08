@@ -45,14 +45,31 @@ function App() {
     });
     setLists(newLists);
   };
-  const onAddTask = (listId, tasks1) => {
+
+  const onAddTask = (listId, task) => {
     const newLists = lists.map((list) => {
       if (list.id === listId) {
-        list.tasks = [...list.tasks, tasks1];
+        list.tasks = [...list.tasks, task];
       }
+      // console.log(task);
       return list;
     });
+
     setLists(newLists);
+    console.log(tasks);
+  };
+
+  const onRemoveTask = (obj, id) => {
+    if (window.confirm("удалить?")) {
+      axios
+        .delete("http://localhost:3001/tasks/" + id)
+        .catch(() => alert("ошибка"));
+
+      // console.log(obj.id);
+      // console.log(id);
+      // console.log(newLists);
+      //setLists(newLists);
+    }
   };
 
   useEffect(() => {
@@ -119,6 +136,7 @@ function App() {
                 lists={list}
                 onEditTitle={onEditListTitle}
                 onAddTask={onAddTask}
+                onRemove={onRemoveTask}
               />
             ))}
         </Route>
@@ -129,6 +147,7 @@ function App() {
               lists={tasks}
               onEditTitle={onEditListTitle}
               onAddTask={onAddTask}
+              onRemove={onRemoveTask}
             />
           )}
         </Route>
