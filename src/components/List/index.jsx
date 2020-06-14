@@ -20,7 +20,9 @@ const List = ({
 }) => {
   const removed = (e) => {
     window.confirm("Вы хотите удалить?");
-    axios.delete("http://localhost:3001/lists/" + e).then(onRemove({ id: e }));
+    axios
+      .delete("https://todoshechka1.herokuapp.com/lists/" + e)
+      .then(onRemove({ id: e }));
   };
 
   return (

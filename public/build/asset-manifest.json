@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.57d9ad3d.chunk.css",
+    "main.js": "/static/js/main.567ed60f.chunk.js",
+    "main.js.map": "/static/js/main.567ed60f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1b47fdd3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1b47fdd3.js.map",
+    "static/js/2.33313059.chunk.js": "/static/js/2.33313059.chunk.js",
+    "static/js/2.33313059.chunk.js.map": "/static/js/2.33313059.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.73644e69cc3daf84a7e889109cb8cd0f.js": "/precache-manifest.73644e69cc3daf84a7e889109cb8cd0f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.57d9ad3d.chunk.css.map": "/static/css/main.57d9ad3d.chunk.css.map",
+    "static/js/2.33313059.chunk.js.LICENSE.txt": "/static/js/2.33313059.chunk.js.LICENSE.txt",
+    "static/media/add.svg": "/static/media/add.78cc8215.svg",
+    "static/media/close.svg": "/static/media/close.1175686f.svg",
+    "static/media/edit.svg": "/static/media/edit.413a1061.svg",
+    "static/media/remove.svg": "/static/media/remove.b36a3633.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1b47fdd3.js",
+    "static/js/2.33313059.chunk.js",
+    "static/css/main.57d9ad3d.chunk.css",
+    "static/js/main.567ed60f.chunk.js"
+  ]
+}

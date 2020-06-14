@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "classname": "0.0.0",
     "classnames": "^2.2.6",
+    "firebase": "^7.15.1",
     "g": "^2.0.1",
     "json": "^9.0.6",
     "json-server": "^0.16.1",

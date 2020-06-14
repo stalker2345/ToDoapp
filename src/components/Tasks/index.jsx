@@ -23,7 +23,7 @@ const Tasks = ({
 
     x &&
       axios
-        .patch("http://localhost:3001/lists/" + lists.id, {
+        .patch("https://todoshechka1.herokuapp.com/lists/" + lists.id, {
           name: x,
         })
         .catch(() => alert("ошибка"));

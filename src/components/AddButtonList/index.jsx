@@ -31,7 +31,7 @@ const AddListButton = ({ onAdd, colors }) => {
     if (inputValue !== "") {
       setIsLoading(true);
       axios
-        .post("http://localhost:3001/lists", {
+        .post("https://todoshechka1.herokuapp.com//lists", {
           name: inputValue,
           colorId: selectedColor,
         })

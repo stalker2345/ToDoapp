@@ -8,12 +8,14 @@ import axios from "axios";
 function App() {
   useEffect(() => {
     axios
-      .get("http://localhost:3001/lists?_expand=color&_embed=tasks")
+      .get(
+        "https://todoshechka1.herokuapp.com/lists?_expand=color&_embed=tasks"
+      )
       .then(({ data }) => {
         setLists(data);
       });
     axios
-      .get("http://localhost:3001/colors")
+      .get("https://todoshechka1.herokuapp.com/colors")
       .then(({ data }) => setColors(data));
   }, []);
 
@@ -68,7 +70,7 @@ function App() {
       setLists(newLists);
 
       axios
-        .delete("http://localhost:3001/tasks/" + id)
+        .delete("https://todoshechka1.herokuapp.com/tasks/" + id)
         .catch(() => alert("ошибка"));
     }
   };
@@ -89,7 +91,9 @@ function App() {
       setLists(newLists);
 
       axios
-        .patch("http://localhost:3001/tasks/" + id, { text: taskString })
+        .patch("https://todoshechka1.herokuapp.com/tasks/" + id, {
+          text: taskString,
+        })
         .catch(() => alert("ошибка"));
     }
   };
@@ -108,7 +112,7 @@ function App() {
     });
     setLists(newList);
     axios
-      .patch("http://localhost:3001/tasks/" + id, {
+      .patch("https://todoshechka1.herokuapp.com/tasks/" + id, {
         completed: completed,
       })
       .catch(() => {
